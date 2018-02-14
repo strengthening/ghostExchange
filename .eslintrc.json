@@ -1,0 +1,36 @@
+{
+  "env": {
+    "es6": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": false
+  },
+  "rules": {
+    "indent": [
+      "error",
+      4,
+      {"SwitchCase": 1}
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-constant-condition": ["error", {
+      "checkLoops": false
+    }]
+  }
+}
