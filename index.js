@@ -17,20 +17,18 @@ let config;
 function configure(userConfig) {
 
     if (userConfig) {
-        let targetConfig = config;
 
         if(userConfig.okex){
-            Object.assign(targetConfig.okex, userConfig.okex);
+            Object.assign(defaultConfig.okex, userConfig.okex);
         }
 
         if(userConfig.hbpro){
-            Object.assign(targetConfig.hbpro, userConfig.hbpro);
+            Object.assign(defaultConfig.hbpro, userConfig.hbpro);
         }
-
-        config = targetConfig;
-    }else{
-        config = defaultConfig;
     }
+
+    config = defaultConfig;
+
 }
 
 function marketFuture() {
