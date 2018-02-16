@@ -39,11 +39,11 @@ class MarketFutureAPI{
         return new Promise(async (resolve) => {
             let [dataObj, err] = [undefined, undefined];
             if (exchange === C.EXCHANGE_OKEX) {
-                [dataObj, err] = await this._okexMarketFutureAPI.reqMinKline(symbol, contract_type);
+                [dataObj, err] = await this._okexMarketFutureAPI.reqMinKline(symbol, contractType);
                 return resolve([dataObj, err]);
             }
 
-            [dataObj, err] = await this._okexMarketFutureAPI.reqMinKline(symbol, contract_type);
+            [dataObj, err] = await this._okexMarketFutureAPI.reqMinKline(symbol, contractType);
             return resolve([dataObj, err]);
         });
     }
@@ -52,24 +52,24 @@ class MarketFutureAPI{
         return new Promise(async (resolve) => {
             let [dataObj, err] = [undefined, undefined];
             if (exchange === C.EXCHANGE_OKEX) {
-                [dataObj, err] = await this._okexMarketFutureAPI.reqDayKline(symbol, contract_type);
+                [dataObj, err] = await this._okexMarketFutureAPI.reqDayKline(symbol, contractType);
                 return resolve([dataObj, err]);
             }
 
-            [dataObj, err] = await this._okexMarketFutureAPI.reqDayKline(symbol, contract_type);
+            [dataObj, err] = await this._okexMarketFutureAPI.reqDayKline(symbol, contractType);
             return resolve([dataObj, err]);
         });
     }
 
-    reqPriceLimit(symbol, exchange, contract_type){
+    reqPriceLimit(symbol, exchange, contractType){
         return new Promise(async (resolve) =>{
             let [dataObj, err] = [undefined, undefined];
             if (exchange === C.EXCHANGE_OKEX) {
-                [dataObj, err] = await this._okexMarketFutureAPI.reqPriceLimit(symbol, contract_type);
+                [dataObj, err] = await this._okexMarketFutureAPI.reqPriceLimit(symbol, contractType);
                 return resolve([dataObj, err]);
             }
 
-            [dataObj, err] = await this._okexMarketFutureAPI.reqPriceLimit(symbol, contract_type);
+            [dataObj, err] = await this._okexMarketFutureAPI.reqPriceLimit(symbol, contractType);
             return resolve([dataObj, err]);
         });
     }
