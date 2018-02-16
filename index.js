@@ -1,3 +1,5 @@
+const MarketFutureAPI = require('./marketFutureAPI/marketFutureAPI')
+
 let defaultConfig = {
     okex: {
         base_url: 'https://www.okex.com',
@@ -13,17 +15,27 @@ let config;
 function configure(userConfig) {
 
     if (userConfig) {
-        config = userConfig;
-    }
+        let targetConfig = config;
 
-    config = defaultConfig;
+        if(userConfig.okex){
+            Object.assign(targetConfig.okex, userConfig.okex);
+        }
+
+        if(userConfig.hbpro){
+            Object.assign(targetConfig.hbpro, userConfig.hbpro);
+        }
+
+        config = targetConfig;
+    }else{
+        config = defaultConfig;
+    }
 }
 
 function marketFuture() {
     if (config === undefined)
         configure();
 
-    return
+    return new MarketFutureAPI(config);
 }
 
 const ghostexchange = {
