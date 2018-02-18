@@ -2,13 +2,13 @@ const C = require('../constant/define');
 
 const OkexMarketFutureAPI = require('./okexAPI/marketFutureAPI');
 
-class MarketFutureAPI{
-    constructor(config){
+class MarketFutureAPI {
+    constructor(config) {
         this._config = config;
         this._okexMarketFutureAPI = new OkexMarketFutureAPI(config.okex);
     }
 
-    reqTicker(symbol, exchange, contractType){
+    reqTicker(symbol, exchange, contractType) {
 
         return new Promise(async (resolve) => {
             let [dataObj, err] = [undefined, undefined];
@@ -22,7 +22,7 @@ class MarketFutureAPI{
         });
     }
 
-    reqDepth(symbol, exchange, contractType){
+    reqDepth(symbol, exchange, contractType) {
         return new Promise(async (resolve) => {
             let [dataObj, err] = [undefined, undefined];
             if (exchange === C.EXCHANGE_OKEX) {
@@ -35,7 +35,7 @@ class MarketFutureAPI{
         });
     }
 
-    reqMinKline(symbol, exchange, contractType){
+    reqMinKline(symbol, exchange, contractType) {
         return new Promise(async (resolve) => {
             let [dataObj, err] = [undefined, undefined];
             if (exchange === C.EXCHANGE_OKEX) {
@@ -48,7 +48,7 @@ class MarketFutureAPI{
         });
     }
 
-    reqDayKline(symbol, exchange, contractType){
+    reqDayKline(symbol, exchange, contractType) {
         return new Promise(async (resolve) => {
             let [dataObj, err] = [undefined, undefined];
             if (exchange === C.EXCHANGE_OKEX) {
@@ -61,8 +61,8 @@ class MarketFutureAPI{
         });
     }
 
-    reqPriceLimit(symbol, exchange, contractType){
-        return new Promise(async (resolve) =>{
+    reqPriceLimit(symbol, exchange, contractType) {
+        return new Promise(async (resolve) => {
             let [dataObj, err] = [undefined, undefined];
             if (exchange === C.EXCHANGE_OKEX) {
                 [dataObj, err] = await this._okexMarketFutureAPI.reqPriceLimit(symbol, contractType);
@@ -71,6 +71,12 @@ class MarketFutureAPI{
 
             [dataObj, err] = await this._okexMarketFutureAPI.reqPriceLimit(symbol, contractType);
             return resolve([dataObj, err]);
+        });
+    }
+
+    reqTradesHistory(symbol, dateFormat, since) {
+        return new Promise(async (resolve) => {
+            return resolve(await this._okexMarketFutureAPI.reqTradesHistory(symbol, dateFormat, since));
         });
     }
 }
