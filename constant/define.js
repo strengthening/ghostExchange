@@ -18,3 +18,6 @@ exports.EXCHANGE_OKEX = 'okex';
 exports.OKEX_CONTRACT_TYPE_THIS_WEEK = 'this_week';
 exports.OKEX_CONTRACT_TYPE_NEXT_WEEK = 'next_week';
 exports.OKEX_CONTRACT_TYPE_QUARTER = 'quarter';
+
+exports.DATE_SHORT_FORMAT = '2017-03-10';
+exports.DATE_FULL_FORMAT = '2017-03-10 00:00:00';

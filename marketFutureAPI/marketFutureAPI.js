@@ -3,6 +3,7 @@ const C = require('../constant/define');
 const OkexMarketFutureAPI = require('./okexAPI/marketFutureAPI');
 
 class MarketFutureAPI {
+
     constructor(config) {
         this._config = config;
         this._okexMarketFutureAPI = new OkexMarketFutureAPI(config.okex);
