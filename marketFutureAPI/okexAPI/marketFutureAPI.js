@@ -160,15 +160,20 @@ class OkexMarketFutureAPI {
             api_key: this._config.api_key
         }, this._config.secret_key);
 
-        return new Promise(resolve => {
-            http.postPromiseReq(this._config.base_url + '/api/v1/future_trades_history.do', param)
-                .then(dataStr => {
+        return new Promise(async resolve => {
+            let lastErr = E.ERR_HTTP_RETRY;
+            for (let i = 0; i < this._config.retry_time; i++) {
+                try {
+                    let dataStr = await http
+                        .postPromiseReq(this._config.base_url + '/api/v1/future_trades_history.do', param);
                     let dataObj = JSON.parse(dataStr);
                     if (dataObj.length && dataObj.length > 0) return resolve([dataObj, undefined]);
-                    return resolve([undefined, dataStr]);
-                }, err => {
-                    return resolve([undefined, err]);
-                });
+                } catch (ex) {
+                    lastErr = err;
+                    await time.setTimeout(5000);
+                }
+            }
+            return resolve([undefined, lastErr]);
         });
     }
 

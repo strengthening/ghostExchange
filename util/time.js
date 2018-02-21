@@ -41,3 +41,13 @@ exports.getNextHourTS = function () {
     let now_ts = new Date().getTime();
     return (parseInt(now_ts / 60000 / 60) + 1) * 60000 * 60;
 };
+
+exports.setTimeout = function (delay) {
+    return new Promise((resolve, reject) => {
+        if (delay < 0)
+            reject('setTimeoutErr');
+        setTimeout(function () {
+            resolve();
+        }, delay);
+    });
+};
