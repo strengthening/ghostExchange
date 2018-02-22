@@ -171,6 +171,9 @@ class OkexMarketFutureAPI {
                     if (dataObj.length && dataObj.length > 0) {
                         return resolve([dataObj, undefined]);
                     }
+                    if (dataObj.result !== undefined && !dataObj.result) {
+                        return resolve([undefined, dataStr]);
+                    }
                 } catch (ex) {
                     lastErr = err;
                     await time.setTimeout(5000);
