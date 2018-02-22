@@ -166,8 +166,11 @@ class OkexMarketFutureAPI {
                 try {
                     let dataStr = await http
                         .postPromiseReq(this._config.base_url + '/api/v1/future_trades_history.do', param);
+                    console.log(dataStr);
                     let dataObj = JSON.parse(dataStr);
-                    if (dataObj.length && dataObj.length > 0) return resolve([dataObj, undefined]);
+                    if (dataObj.length && dataObj.length > 0) {
+                        return resolve([dataObj, undefined]);
+                    }
                 } catch (ex) {
                     lastErr = err;
                     await time.setTimeout(5000);
