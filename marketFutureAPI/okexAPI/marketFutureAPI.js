@@ -173,7 +173,7 @@ class OkexMarketFutureAPI {
                     if (dataObj.result !== undefined && !dataObj.result) {
                         return resolve([undefined, dataStr]);
                     }
-                } catch (ex) {
+                } catch (err) {
                     lastErr = err;
                     await time.setTimeout(5000);
                 }
