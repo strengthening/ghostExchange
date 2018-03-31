@@ -163,7 +163,7 @@ class FutureMarketOkex {
                     }
                 } catch (err) {
                     lastErr = err;
-                    await time.util.setTimeout(5000);
+                    await time.delay(5000);
                 }
             }
             return resolve([undefined, lastErr]);

@@ -105,21 +105,17 @@ function minute(timestamp) {
     return parseInt(timestamp / 60000) * 60000;
 }
 
-function setTimeout(delay) {
-    return new Promise((resolve) => {
-        if (delay === undefined || delay < 0)
-            delay = 0;
-
-        setTimeout(function () {
-            resolve();
-        }, delay);
-    });
-}
-
 exports.timestamp = {
     parse, month, day, hour, minute, string
 };
 
-exports.util = {
-    setTimeout
+exports.delay = function (delay) {
+    return new Promise(resolve => {
+        if (delay === undefined || delay < 0)
+            delay = 0;
+
+        setTimeout(function () {
+            return resolve();
+        }, delay);
+    });
 };
