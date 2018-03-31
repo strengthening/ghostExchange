@@ -1,6 +1,11 @@
 
 const constant = require('./constant/define');
+const error = require('./error/define');
 const MarketFutureAPI = require('./marketFutureAPI/marketFutureAPI');
+
+const future = require('./future/define');
+const spot = require('./spot/define');
+const http = require('./http/define');
 
 let defaultConfig = {
     okex: {
@@ -38,10 +43,9 @@ function marketFuture() {
     return new MarketFutureAPI(config);
 }
 
-const ghostexchange = {
+module.exports = {
     configure,
     marketFuture,
-    constant,
+    constant, error,
+    future, spot, http
 };
-
-module.exports = ghostexchange;
