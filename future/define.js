@@ -1,9 +1,5 @@
-function market() {
-    
-}
+const FutureMarket = require('./market/define');
+const FutureTrade = require('./trade/define');
 
-function trade() {
-    
-}
-
-moulde.exports = {market, trade};
+exports.FutureMarket = FutureMarket;
+exports.FutureTrade = FutureTrade;

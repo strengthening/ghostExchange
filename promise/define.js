@@ -1,4 +1,4 @@
-exports.getStdPromise = function (promise) {
+function standard(promise) {
     return new Promise((resolve) => {
         promise.then(result => {
             resolve([result, undefined]);
@@ -6,4 +6,6 @@ exports.getStdPromise = function (promise) {
             resolve([undefined, err]);
         });
     });
-};
+}
+
+module.exports = {standard};
