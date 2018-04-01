@@ -1,7 +1,7 @@
 {
   "name": "ghostexchange",
   "version": "1.0.1",
-  "description": "The exchange API ",
+  "description": "The exchange API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
