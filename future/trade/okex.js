@@ -47,6 +47,24 @@ class FutureTradeOkex {
         });
     }
 
+    cancel(symbol, contract_type, order_id) {
+        return new Promise(async resolve => {
+            let param = this.sign({
+                symbol, contract_type, order_id,
+                api_key: this._config.api_key
+            }, this._config.secret_key);
+
+            http.post(this._config.base_url + '/api/v1/future_cancel.do', param)
+                .then(function (dataStr) {
+                    let dataObj = JSON.parse(dataStr);
+                    if (dataObj.result) return resolve([dataObj, undefined]);
+                    return resolve([undefined, dataStr]);
+                }, function (err) {
+                    return resolve([undefined, err]);
+                });
+        });
+    }
+
     cancelOrderInfo(symbol, contract_type, order_id) {
 
         return new Promise(async resolve => {
