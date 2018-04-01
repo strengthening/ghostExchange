@@ -31,6 +31,13 @@ class FutureMarket {
 
     }
 
+    kline(symbol, exchange, contract_type, type){
+        if(exchange === C.EXCHANGE_OKEX){
+            return this._okex.kline(symbol, contract_type, type);
+        }
+        return this._okex.kline(symbol, contract_type, type);
+    }
+
     minKline(symbol, exchange, contract_type){
 
         if (exchange === C.EXCHANGE_OKEX) {

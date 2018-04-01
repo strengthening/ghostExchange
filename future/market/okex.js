@@ -62,6 +62,32 @@ class FutureMarketOkex {
         });
     }
 
+    kline(symbol,contract_type, type){
+        return new Promise(async (resolve) => {
+            let param = {
+                symbol, contract_type, type,
+                size: 300, since: 0
+            };
+            let lastErr = E.HTTP_RETRY_OUT;
+
+            for (let i = 0; i < this._config.retry_time; i++) {
+                try {
+                    let dataStr = await http
+                        .get(this._config.base_url + '/api/v1/future_kline.do', param);
+
+                    let dataObj = JSON.parse(dataStr);
+                    if (dataObj.result !== undefined && !dataObj.result) {
+                        return resolve([undefined, dataStr]);
+                    }
+                    return resolve([dataObj, undefined]);
+                } catch (err) {
+                    lastErr = err;
+                }
+            }
+            return resolve([undefined, lastErr]);
+        });
+    }
+
     minKline(symbol, contract_type) {
 
         let param = {
