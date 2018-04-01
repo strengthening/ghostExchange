@@ -26,6 +26,13 @@ class FutureTrade {
         return this._okex.orderInfo(symbol, contract_type, order_id);
     }
 
+    cancel(symbol, exchange, contract_type, order_id){
+        if(exchange === C.EXCHANGE_OKEX){
+            return this._okex.cancel(symbol, contract_type, order_id);
+        }
+        return this._okex.cancel(symbol, contract_type, order_id);
+    }
+
     cancelOrderInfo(symbol, exchange, contract_type, order_id) {
 
         if (exchange === C.EXCHANGE_OKEX) {
