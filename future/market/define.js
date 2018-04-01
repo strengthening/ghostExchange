@@ -1,11 +1,20 @@
 const C = require('../../constant/define');
 
+const defaultConf = require('../../config/exchange.json');
+
 const FutureMarketOkex = require('./okex');
 
 class FutureMarket {
 
     constructor(config) {
-        this._config = config;
+
+        if(config.okex)
+            Object.assign(defaultConf.okex, config.okex);
+
+        if(config.hbpro)
+            Object.assign(defaultConf.hbpro, config.hbpro);
+
+        this._config = defaultConf;
         this._okex = new FutureMarketOkex(this._config.okex);
     }
 
