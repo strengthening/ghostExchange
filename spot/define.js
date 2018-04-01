@@ -6,4 +6,4 @@ function trade() {
 
 }
 
-moulde.exports = {market, trade};
+module.exports = {market, trade};
