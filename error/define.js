@@ -3,4 +3,5 @@ exports.ERR_UNRECOGNIZED_EXCHANGE = '[fatal error] Can not recognize the exchang
 exports.ERR_UNRECOGNIZED_CONTRACT_TYPE = '[fatal error] Can not recognize the contract_type ';
 
 
-exports.ERR_HTTP_RETRY = '[fatal error] http try too many time';
+exports.HTTP_RETRY_OUT = '[fatal error] http try too many time';
+exports.HTTP_NO_REASON = '[fatal error] Can not catch any error';
