@@ -4,6 +4,8 @@ const C = require('../constant/define');
 
 function parse(dateStr, format) {
     let timestamp = -1;
+    if (typeof dateStr === 'number')
+        dateStr = dateStr + '';
     if (format === C.DATE_SHORT_FORMAT) {
 
         let year = parseInt(dateStr.substr(0, 4));
