@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 
 const E = require('../../error/define');
+const C = require('../../constant/define');
 
 const http = require('../../http/define');
 const time = require('../../time/define');
@@ -62,7 +63,7 @@ class FutureMarketOkex {
         });
     }
 
-    kline(symbol,contract_type, type){
+    kline(symbol, contract_type, type) {
         return new Promise(async (resolve) => {
             let param = {
                 symbol, contract_type, type,
@@ -174,6 +175,8 @@ class FutureMarketOkex {
             api_key: this._config.api_key
         }, this._config.secret_key);
 
+        let dueTimestamp = time.timestamp.parse(date, C.DATE_STANDARD_FORMAT) + 16 * 60 * 60 * 1000;
+
         return new Promise(async resolve => {
             let lastErr = E.HTTP_RETRY_OUT;
             for (let i = 0; i < this._config.retry_time; i++) {
@@ -182,6 +185,13 @@ class FutureMarketOkex {
                         .post(this._config.base_url + '/api/v1/future_trades_history.do', param);
                     let dataObj = JSON.parse(dataStr);
                     if (dataObj.length && dataObj.length > 0) {
+                        //change to the right type
+                        for (let i = 0; i < dataObj.length; i++) {
+                            dataObj[i]['amount'] = parseInt(dataObj[i]['amount']);
+                            dataObj[i]['price'] = parseFloat(dataObj[i]['price']);
+                            dataObj[i]['due_timestamp'] = dueTimestamp;
+                            dataObj[i]['symbol'] = symbol;
+                        }
                         return resolve([dataObj, undefined]);
                     }
                     if (dataObj.result !== undefined && !dataObj.result) {
