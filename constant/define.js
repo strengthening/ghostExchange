@@ -7,13 +7,17 @@ exports.SYMBOL_ETC_USD = 'etc_usd';
 exports.EXCHANGE_HUOBI = 'hb';
 exports.EXCHANGE_OKEX = 'okex';
 
-exports.ORDER_STATUS_WAIT = 'wait';
+exports.ORDER_STATUS_WAIT = 'wait';   //  等待成交订单
+exports.ORDER_STATUS_OPEN = 'open';   //  已开仓订单
 exports.ORDER_STATUS_IN = 'in';
 exports.ORDER_STATUS_WIN = 'win';
 exports.ORDER_STATUS_LOSE = 'lose';
-exports.ORDER_STATUS_ERROR = 'error';
-exports.ORDER_STATUS_CANCEL = 'cancel';
+exports.ORDER_STATUS_ERROR = 'error';   //  错误入场订单
+exports.ORDER_STATUS_CANCEL = 'cancel';   //  取消入场订单
+exports.ORDER_STATUS_TOP = 'top';   //  上行通道订单
+exports.ORDER_STATUS_BOTTOM = 'bottom';   //  下行通道订单
 exports.ORDER_STATUS_OUT = 'out';
+exports.ORDER_STATUS_LIQUIDATE = 'liquidate';   //  已平仓订单
 exports.ORDER_STATUS_LOCK = 'lock';
 exports.ORDER_STATUS_DELETE = 'delete';
 

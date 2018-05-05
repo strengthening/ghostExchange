@@ -16,7 +16,6 @@ function get(url, param) {
             url: url+'?'+qs.stringify(param),
             headers: headers,
             forever: true,
-            // proxy: 'http://112.124.38.227:52417',
             timeout: 5000
         };
 
@@ -40,7 +39,6 @@ function post(url, param) {
 
         request.post(url, {
             forever: true,
-            // proxy: 'http://112.124.38.227:52417',
             form: param
         }, function (error, res, body) {
             if (!error && res.statusCode === 200) {
