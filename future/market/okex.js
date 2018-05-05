@@ -63,6 +63,39 @@ class FutureMarketOkex {
         });
     }
 
+    trades(symbol, contract_type) {
+        return new Promise(async (resolve) => {
+            let param = {
+                symbol, contract_type
+            };
+
+            let lastErr = E.HTTP_RETRY_OUT;
+            for (let i = 0; i < this._config.retry_time; i++) {
+                try {
+                    let dataStr = await http
+                        .get(this._config.base_url + '/api/v1/future_trades.do', param);
+                    let dataObj = JSON.parse(dataStr);
+                    if (dataObj.length && dataObj.length > 0) {
+                        //change to the right type
+                        for (let i = 0; i < dataObj.length; i++) {
+                            dataObj[i]['amount'] = parseInt(dataObj[i]['amount']);
+                            dataObj[i]['price'] = parseFloat(dataObj[i]['price']);
+                            dataObj[i]['symbol'] = symbol;
+                        }
+                        return resolve([dataObj, undefined]);
+                    }
+                    if (dataObj.result !== undefined && !dataObj.result) {
+                        return resolve([undefined, dataStr]);
+                    }
+                    return resolve([dataObj, undefined]);
+                } catch (err) {
+                    lastErr = err;
+                }
+            }
+
+        });
+    }
+
     kline(symbol, contract_type, type) {
         return new Promise(async (resolve) => {
             let param = {
