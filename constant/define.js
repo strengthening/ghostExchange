@@ -21,6 +21,9 @@ exports.ORDER_STATUS_LIQUIDATE = 'liquidate';   //  已平仓订单
 exports.ORDER_STATUS_LOCK = 'lock';
 exports.ORDER_STATUS_DELETE = 'delete';
 
+exports.ORDER_DIRECTION_LEFT = 'left';
+exports.ORDER_DIRECTION_RIGHT = 'right';
+
 exports.INTERVAL_LEVEL_NORMAL = 5000;
 exports.INTERVAL_LEVEL_FAST = 3000;
 exports.INTERVAL_LEVEL_FASTER = 1000;
