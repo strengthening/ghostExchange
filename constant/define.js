@@ -3,6 +3,7 @@ exports.SYMBOL_ETH_USD = 'eth_usd';
 exports.SYMBOL_LTC_USD = 'ltc_usd';
 exports.SYMBOL_BCH_USD = 'bch_usd';
 exports.SYMBOL_ETC_USD = 'etc_usd';
+exports.SYMBOL_EOS_USD = 'eos_usd';
 
 exports.EXCHANGE_HUOBI = 'hb';
 exports.EXCHANGE_OKEX = 'okex';
@@ -20,6 +21,11 @@ exports.ORDER_STATUS_OUT = 'out';
 exports.ORDER_STATUS_LIQUIDATE = 'liquidate';   //  已平仓订单
 exports.ORDER_STATUS_LOCK = 'lock';
 exports.ORDER_STATUS_DELETE = 'delete';
+
+exports.ORDER_TYPE_OPEN_LONG = 'open_long';
+exports.ORDER_TYPE_OPEN_SHORT = 'open_short';
+exports.ORDER_TYPE_LIQUIDATE_LONG = 'liquidate_long';
+exports.ORDER_TYPE_LIQUIDATE_SHORT = 'liquidate_short';
 
 exports.ORDER_DIRECTION_LEFT = 'left';
 exports.ORDER_DIRECTION_RIGHT = 'right';
