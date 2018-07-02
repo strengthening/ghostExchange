@@ -228,7 +228,10 @@ class FutureMarketOkex {
                         return resolve([dataObj, undefined]);
                     }
                     if (dataObj.result !== undefined && !dataObj.result) {
-                        return resolve([undefined, dataStr]);
+                        if (dataStr.indexOf(20049) < 0) {
+                          return resolve([undefined, dataStr]);
+                        }
+                        await time.delay(5000);
                     }
                 } catch (err) {
                     lastErr = err;
