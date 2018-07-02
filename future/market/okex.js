@@ -231,11 +231,11 @@ class FutureMarketOkex {
                         if (dataStr.indexOf(20049) < 0) {
                           return resolve([undefined, dataStr]);
                         }
-                        await time.delay(5000);
+                        await time.delay(120000);
                     }
                 } catch (err) {
                     lastErr = err;
-                    await time.delay(5000);
+                    await time.delay(120000);
                 }
             }
             return resolve([undefined, lastErr]);
